@@ -244,6 +244,28 @@ Therefore, this literature review is guided by the following primary research qu
 
 Can multimodal models explain the step-by-step reasoning behind solutions to image-based computing problems?
 
+\section{Methods}
+In accordance with PRISMA standards for systematic reviews, the methodology for evaluating the efficacy of Large Multimodal Models (LMMs) in solving computing-based visual questions involved a multi-stage selection and synthesis process.
+
+\subsection{Paper Selection and Search Strategy}
+Primary literature was identified through systematic searches across three major digital repositories: the ACM Digital Library, IEEE Xplore, and arXiv~\cite{denny2023conversing, gutierrez2024seeing, hou2024more}. The search targeted high-impact peer-reviewed research and technical reports published between 2023 and 2026 to capture the rapid transition from text-only Large Language Models (LLMs) to current frontier Multimodal Foundation Models (MFMs) such as GPT-4o, Gemini 1.5 Pro, and Claude 3.5 Sonnet~\cite{gutierrez2024seeing, hou2024more, gupta2024polymath}.
+
+\subsection{Inclusion and Exclusion Criteria}
+Papers were selected based on Curricular Grounding, specifically targeting ``Core Tier 1'' computer science topics including fundamental data structures (graphs, trees), algorithms (flowcharts), and visual code logic (Parsons problems)~\cite{gutierrez2024seeing, hou2024more}.
+\begin{itemize}
+    \item \textbf{Inclusion:} Priority was given to research introducing novel, computationally generated benchmarks (e.g., FlowVQA, MISS-QA, POLYMATH) to mitigate ``data leakage'' from existing online educational resources~\cite{singh2024flowvqa, gupta2024polymath, zhao2025missqa}.
+    \item \textbf{Exclusion:} Studies focusing exclusively on natural scene photography or text-to-text programming tasks without a visual component were omitted~\cite{gutierrez2024seeing, li2024mmcode}.
+\end{itemize}
+
+\subsection{Evaluation Dimensions}
+Synthesized studies were evaluated across four critical dimensions for diagram-based questions:
+\begin{itemize}
+    \item \textbf{Structural Complexity:} The impact of variations in node count, edge density, and spatial layout on reasoning accuracy~\cite{singh2024flowvqa, gutierrez2024seeing}.
+    \item \textbf{Reasoning Depth:} The distinction between single-hop Fact Retrieval (localized information) and macroscopic Topological Reasoning (structural logic)~\cite{singh2024flowvqa, chen2024m3cot}.
+    \item \textbf{Aesthetic Robustness:} Sensitivity to non-structural variations such as node colour, rendered edge width, and font styles~\cite{gutierrez2024seeing, hou2024more}.
+    \item \textbf{Visual Grounding (VG):} The ability of models to correctly associate textual generation with specific image regions~\cite{ramachandran2025how, lu2025rsvp}.
+\end{itemize}
+
 \section{Template Overview}
 As noted in the introduction, the ``\verb|acmart|'' document class can
 be used to prepare many different kinds of documentation --- a
