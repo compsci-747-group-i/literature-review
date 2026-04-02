@@ -439,6 +439,178 @@ highly sensitive. Removing components such as Salient Concept Selection
 can result in a reduction in interpretability of more than 50\%, while 
 removing program disentangling affects accuracy~\cite{jiang2025wise}.
 
+\section{Discussion: Understanding the Limits of Explainable Multimodal AI}
+The strategic significance of these results resides in their capacity to 
+transcend mere data extraction, advancing towards structured, interpretable 
+reasoning. By examining the quality and dependability of model-generated 
+rationales, the discipline evolves from mere classification to a framework 
+in which models are not only precise but also ``right for the right reasons,'' 
+thereby reducing dependence on dataset shortcuts and superficial 
+correlations~\cite{chen2024m3cot, wang2026bridging, jiang2025wise}. 
+This change is especially important for diagram-based computing tasks, where 
+how clear the reasoning is affects trust, usability, and educational value.
+
+\subsection{Trends: The Visual Safeguard is Losing Its Power}
+The high level of skill that models like GPT-4V have in solving Parsons 
+problems, even when there is background noise or UI elements, shows that 
+visual programming is no longer a good way to protect academic 
+integrity~\cite{hou2024more}. Multimodal models have successfully bridged 
+the transcription gap that previously constrained text-only LLMs, 
+facilitating the seamless interpretation of structured visual inputs, 
+including code blocks, trees, and flowcharts~%
+\cite{gutierrez2024seeing, hou2024more}.
+
+This trend is in line with bigger changes in multimodal reasoning, where 
+models are putting perception and reasoning into the same pipelines more 
+and more. Consequently, tasks that were formerly impervious to automation 
+owing to their visual characteristics are now resolvable with significant 
+reliability, fundamentally contesting conventional assessment paradigms in 
+computer science education.
+
+\subsection{How well does step-by-step logic work compared to holistic inference?}
+The deconstruction of intricate problems into clear reasoning chains 
+mitigates a primary deficiency in conventional transformer architectures: 
+their propensity for ``Bag-of-Words'' behavior, which inadequately represents 
+relational structure. Frameworks like P2X make programs separate by making 
+models clearly name subjects, relations, and objects. This turns general 
+predictions into structured, step-by-step reasoning processes.
+
+The WISE framework also uses an Elimination Tree to create a hierarchical 
+reasoning structure. This tree uses counterfactual reasoning to get rid of 
+confusing categories~\cite{jiang2025wise}. The model imitates expert-level 
+diagnostic reasoning by excluding ``matching negatives,'' guaranteeing that 
+conclusions are founded on discriminative features rather than probabilistic 
+shortcuts. This is very similar to tasks that require diagram-based 
+reasoning, where knowing how nodes and edges are related is important for 
+getting the right answer.
+
+\subsection{Complexity of Structure and Cognitive Load}
+The literature consistently identifies structural density, quantified by 
+the number of nodes and edges, as the principal factor contributing to 
+performance degradation in multimodal reasoning tasks~%
+\cite{singh2024flowvqa, gutierrez2024seeing}. As diagrams get more 
+complicated, models have to deal with more interdependent relationships, 
+which makes it harder for people to think and less accurate.
+
+Multi-step reasoning (e.g., MCoT) has a high cognitive load that makes 
+performance drop by at least 29.06\% compared to single-step tasks~%
+\cite{chen2024m3cot}. This underscores a significant constraint: although 
+structured reasoning enhances interpretability, it concurrently imposes 
+computational and cognitive burdens.
+
+The ``Textual Paradox'' seen in the POLYMATH benchmark makes this limitation 
+even clearer. Models do 4--7\% better when they are given text descriptions 
+of diagrams instead of visual inputs. This suggests that current systems still 
+rely a lot on language-based reasoning and don't fully understand visual 
+logic yet~\cite{gupta2024polymath}. This strengthens the idea that multimodal 
+integration is not yet finished.
+
+\subsection{The Trade-off Between Interpretability and Accuracy and How They Work Together}
+A substantial advancement in contemporary research is the contestation of 
+the conventional ``interpretability-accuracy trade-off.'' Empirical evidence 
+indicates that structured reasoning can enhance both interpretability and 
+accuracy concurrently~\cite{jiang2025wise}.
+
+For instance, in the SkinCon-9 dataset, there is a 1.86\% improvement in 
+accuracy and a big improvement in how easy it is to understand. This implies 
+that reasoning functions as a corrective mechanism: when visual perception 
+is noisy or ambiguous, structured reasoning allows the model to concentrate 
+on significant features and eliminate extraneous information.
+
+Black-box models, on the other hand, don't have this internal correction 
+system, which makes them more likely to make mistakes that get worse over 
+time. So, interpretability shouldn't be seen as a limit, but as a way to 
+make multimodal reasoning strong and reliable.
+
+\subsection{Research Gaps, Unresolved Challenges, and Evidence Strength}
+Despite these advances, there exist some significant challenges that need 
+to be overcome in the development of reliable multimodal AI systems.
+
+\subsubsection{Technical Bottlenecks}
+Long-horizon reasoning is one of the significant technical bottlenecks in 
+the development of multimodal AI systems. The majority of multimodal models 
+in the MMCode benchmark cannot solve more than 20\% of the tasks that involve 
+reasoning over multiple images and code generation~\cite{li2024mmcode}. 
+Also, the P2X model requires the use of separate program generators; 
+therefore, it cannot be optimized end-to-end. It is not possible to handle 
+the single point of failure during the parsing process.
+
+In Meta-analytical Insight there is an observation that both symbolic and 
+statistical approaches converge in the context of multimodal AI systems. 
+The MultiFIX model is based on the application of symbolic reasoning with 
+the help of genetic programming. The WISE model is based on the application 
+of decision tree reasoning with the help of information gain (Gini Impurity)~%
+\cite{jiang2025wise}. Although both models attempt to offer surrogate 
+interpretability, they vary in their efficiency, scalability, and logical 
+simplicity.
+
+\subsubsection{Data Limitations}
+For instance, in benchmark datasets like MISS-QA, the difficulty lies in 
+the alignment of visual schematic elements with the provided textual 
+narratives, thereby revealing the lack of cross-modal grounding~%
+\cite{zhao2025missqa}. Furthermore, datasets like SkinCon have revealed the 
+limitations of the granularity of their respective domain-specific concepts, 
+where the available coarse ontologies cannot differentiate between visually 
+similar categories.
+
+The difficulty of weak-to-strong generalization adds complexity to the 
+training process. Although small models like CLIP can be used as supervision 
+for large multimodal models, there is always a risk of propagating 
+hallucinations and biases from the weak model to the stronger model~%
+\cite{jiang2025wise}.
+
+\subsubsection{Explainable Reasoning Limitations}
+Current models face challenges like ``pleonastic branching'' and unnecessary 
+self-reflection. These challenges cause inefficient and even deceptive 
+reasoning paths~\cite{wang2026bridging, jiang2025wise}. Although tools like 
+WISE and CoT Compression help in improving the quality of the explanation, 
+the problem of faithful and concise explanation remains.
+
+\subsection{Future Directions: Human-in-the-Loop and Foundation Models}
+The way forward in the development of trustworthy multimodal AI involves 
+a focus on interactive and controllable reasoning systems.
+The key ways in which this can be achieved include:
+\begin{itemize}
+    \item \textbf{Intervention Efficiency:} Allowing human experts in the field 
+    to directly manipulate intermediate reasoning concepts in order to control 
+    the output of the model in real time.
+    \item \textbf{Hallucination Mitigation:} Creating standardized benchmarks 
+    for detecting discrepancies between the generated explanation and visual 
+    information.
+    \item \textbf{Hybrid Training Strategies:} Incorporating symbolic reasoning, 
+    as in MultiFIX, into the pre-training of foundation-level multimodal models.
+\end{itemize}
+These ways of proceeding highlight the need for human expertise in combination 
+with machine reasoning in order to develop robust and trustworthy AI systems.
+
+\subsection{Pedagogical Implications}
+Rather than using adversarial assessment practices, it is recommended that 
+teachers utilize multimodal models as intelligent learning assistants~%
+\cite{denny2023conversing, gutierrez2024seeing}. The models can be highly 
+beneficial in assisting with the understanding of hierarchical concepts 
+such as trees and recursion, which can be difficult for students to grasp~%
+\cite{gutierrez2024seeing, hou2024more}.
+
+In order to be more resilient in the face of advanced AI models, it is 
+recommended that assessment practices shift towards more project-based 
+learning, conceptual understanding, and problem-based learning. Assessment 
+practices such as ``ungrading'' can be beneficial in the classroom~%
+\cite{gutierrez2024seeing, hou2024more}.
+
+\subsection{Synthesis and Final Interpretation}
+The research question can be answered with qualified affirmation, since it 
+is indeed possible for multimodal models to explain their reasoning in 
+diagram-based computing tasks, although it is heavily dependent on structured 
+reasoning frameworks, concept organization, and visual grounding~%
+\cite{chen2024m3cot, jiang2025wise}.
+
+The next major milestone in the development of expert-level AI systems will 
+be the transition from interpreting raw pixel information to meaningful and 
+explainable reasoning. Although multimodal models have shown remarkable 
+potential in performing tasks in structured environments, there is still 
+an evolving challenge in developing robust and generalizable reasoning in 
+multimodal tasks.
+
 %%
 %% The next two lines define the bibliography style to be used, and
 %% the bibliography file.
