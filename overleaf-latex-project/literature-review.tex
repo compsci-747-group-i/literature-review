@@ -293,6 +293,152 @@ diagram-based questions:
     \cite{ramachandran2025how, lu2025rsvp}.
 \end{itemize}
 
+\section{Results: Objective Synthesis of Multimodal Reasoning Frameworks}
+The synthesis of the included studies demonstrates a notable gap in the 
+performance levels based on the structural nature and linearity of visual 
+computing tasks, in addition to a paradigm shift in the field towards 
+high-performing multimodal reasoning frameworks~%
+\cite{singh2024flowvqa, gutierrez2024seeing, chen2024m3cot}. 
+As the application of MLLMs continues to grow in high-stakes settings, 
+the research has shifted from the accuracy of predictions to the transparency 
+of reasoning, or whether the model can provide step-by-step explanations 
+for diagram-based problem-solving, as verifiable by humans~%
+\cite{chen2024m3cot, wang2026bridging, jiang2025wise}.
+
+\subsection{Comparative Analysis of Core Methodologies}
+The current research landscape is defined by two complementary directions: 
+(i) diagram-based reasoning performance in computing tasks, and 
+(ii) interpretability-driven multimodal reasoning frameworks.
+On one hand, models such as GPT-4o, Gemini, and Claude are evaluated 
+on structured computing diagrams including graphs, trees, and flowcharts~%
+\cite{singh2024flowvqa, gutierrez2024seeing}. On the other hand, 
+frameworks such as WISE, P2X, and MultiFIX focus on improving reasoning 
+transparency through structured decomposition and symbolic alignment~%
+\cite{jiang2025wise}.
+
+\begin{table*}
+\caption{Comparison of Core Methodologies and Frameworks}
+\begin{tabular}{p{0.15\linewidth} p{0.3\linewidth} p{0.25\linewidth} p{0.2\linewidth}}
+\toprule
+\textbf{Framework} & \textbf{Primary Mechanism} & \textbf{Backbone Models Used} & \textbf{Output Type} \\
+\midrule
+WISE~\cite{jiang2025wise} & Weak Supervision \& CBM Reformulation & CLIP (ViT-L/14), Qwen2-VL-7B & Multimodal Chain-of-Thought (MCoT) \\
+P2X & Program Deconstruction \& Reasoning Cells & VLMO, ALBEF & Bounding Boxes, Classes, Answers \\
+MultiFIX & Multimodal Data Fusion + Symbolic Reasoning & DL + Genetic Programming & Symbolic Expressions, Heatmaps \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+The WISE Logic Hierarchy proposes the following structure in the reasoning pipeline:
+\begin{itemize}
+    \item \textbf{Prior Tree:} Category-level priors for efficient paths in the reasoning process
+    \item \textbf{Affirmation Tree:} Supporting evidence specific to the instance
+    \item \textbf{Elimination Tree:} Utilizing counterfactuals to eliminate incorrect paths
+\end{itemize}
+This hierarchy has close ties to the diagram reasoning task because it involves 
+both identifying components and relationships~\cite{jiang2025wise}.
+
+\subsection{Performance on Foundational Computing Diagrams}
+MFMs have high skills in solving linear and hierarchical diagrams but face 
+difficulties in non-linear diagrams~\cite{gutierrez2024seeing, hou2024more}. 
+GPT-4V scored a near-perfect percentage of 96.7\% on visual Parsons problems, 
+including all representations such as Runestone and Epplets~\cite{hou2024more}.
+In hierarchical data structures, GPT-4o scored the highest at 87.6\% on 
+tree-based structures, while there was a drastic fall in accuracy to 44.7\% 
+on non-hierarchical graphs, showing a limitation in dealing with complex 
+relational dependencies~\cite{gutierrez2024seeing}.
+
+\begin{table*}
+\caption{Comparative Model Accuracy (\%) Across Diagrammatic Benchmarks}
+\label{tab:accuracy}
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Model Family} & \textbf{Parsons~\cite{hou2024more}} & \textbf{Trees (BST)~\cite{gutierrez2024seeing}} & \textbf{Graphs (UG/DG)~\cite{gutierrez2024seeing}} & \textbf{FlowVQA~\cite{singh2024flowvqa}} & \textbf{Schematics~\cite{zhao2025missqa}} \\
+\midrule
+GPT-4o/V & 96.7 & 92.5 & 44.7 & 61.2 & 63.0 \\
+Gemini 1.5 & 69.2 (Bard) & 70.8 (Pro) & 56.2 (Flash) & 49.5 (Pro) & 67.3 (Flash) \\
+Claude 3.5/Opus & --- & 63.1 (Opus) & 25.7 (Opus) & --- & 78.3 (o4-mini) \\
+Human Expert & 100.0 & 95.1 & 75.0 & 85.3 & 89.0 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\subsection{Strengths and Failure Modes}
+A common trend observed with all diagram-based benchmarks is the existence 
+of a topological reasoning deficiency. This is evident with the FlowVQA model, 
+where performance is significantly higher on Fact Retrieval (T1) than 
+Topological reasoning (T4) tasks. This indicates a deficiency in multi-step 
+topological reasoning capabilities. Accuracy is observed to dip drastically 
+with an increase in the complexity of the diagrams, reducing from 51\% to 34\% 
+with an increase in complexity from simple flowcharts to complex ones~%
+\cite{singh2024flowvqa}.
+
+Directional biases point to the deficiency in true visual grounding. 
+This is evident with the performance drop of up to 15\% with an inversion 
+of the flowcharts from top-down to bottom-up. This indicates that the model 
+is not performing true visual grounding but is instead relying on prior 
+knowledge about the orientation of the diagrams~%
+\cite{singh2024flowvqa, ramachandran2025how}.
+
+An analysis of the errors with the POLYMATH model indicates that around 
+60\% of the errors are due to logical errors, while around 25\% are due 
+to spatial errors. This indicates a deficiency in reasoning consistency 
+and spatial understanding~\cite{gupta2024polymath}.
+
+\subsection{Quantitative Benchmarking of Accuracy and Interpretability}
+Experimental results on multimodal reasoning benchmarks 
+(CUB, SkinCon, LAD, GQA) show that the structured reasoning framework 
+improves both accuracy and interpretability~\cite{jiang2025wise}.
+
+\begin{table}[h]
+\caption{Quantitative Benchmarking of Accuracy and Interpretability}
+\label{tab:interpretability_benchmarks}
+\centering
+\begin{tabular}{lccc}
+\toprule
+\textbf{Dataset} & \textbf{Baseline} & \textbf{MCoT-Guided} & \textbf{Interpretability} \\
+\midrule
+CUB (Birds) & 82.40\% & 83.69\% & 65.03\% \\
+SkinCon-9 & 60.37\% & 62.23\% & 93.45\% \\
+LAD-H & 59.02\% & 61.61\% & 83.44\% \\
+GQA & 60.78\% & 64.13\% & 85.49\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Key results include:
+\begin{itemize}
+    \item \textbf{Interpretability improvement:} WISE shows a $\sim$37\% 
+    improvement in interpretability compared to zero-shot MCoT~\cite{jiang2025wise}.
+    \item \textbf{OOD robustness:} P2X achieves state-of-the-art results 
+    on GQA-OOD with up to 4.5\% improvement.
+    \item \textbf{Concept efficiency:} $\sim$7 out of 312 concepts are used 
+    to classify 200 categories.
+\end{itemize}
+These results show that reasoning structure contributes to interpretability 
+improvement as well as performance improvement.
+
+\subsection{Reasoning Quality and Prompting Strategies}
+Prompt engineering continues to play a vital role in improving multimodal 
+reasoning efficiency~\cite{singh2024flowvqa, denny2023conversing}. 
+Techniques such as Multimodal Chain-of-Thought (M3CoT) can be used to 
+decompose complex problems into simpler ones for better reasoning 
+efficiency but at a computational cost~\cite{chen2024m3cot}. 
+Techniques such as Explainable CoT Compression (XMCC) can be used to 
+improve efficiency by reducing redundant steps while still maintaining 
+alignment signals~\cite{wang2026bridging}. RSVP can be used to improve 
+efficiency by enhancing object granularity for visual tasks~\cite{lu2025rsvp}. 
+
+Reasoning quality can be measured using various metrics beyond accuracy. 
+Techniques such as WISE use Gini Impurity to measure decision efficiency, 
+while P2X uses BLEU-4, CIDEr-D, and IoU for both linguistic and spatial 
+alignment~\cite{jiang2025wise}. 
+
+Ablation studies have shown that the multimodal reasoning pipeline is 
+highly sensitive. Removing components such as Salient Concept Selection 
+can result in a reduction in interpretability of more than 50\%, while 
+removing program disentangling affects accuracy~\cite{jiang2025wise}.
+
 %%
 %% The next two lines define the bibliography style to be used, and
 %% the bibliography file.
