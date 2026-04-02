@@ -57,8 +57,8 @@
 %% the commands and values with those provided to you when you
 %% complete the rights form.
 \setcopyright{acmlicensed}
-\copyrightyear{2018}
-\acmYear{2018}
+\copyrightyear{2026}
+\acmYear{2026}
 \acmDOI{XXXXXXX.XXXXXXX}
 %% These commands are for a PROCEEDINGS abstract or paper.
 \acmConference[Conference acronym 'XX]{Make sure to enter the correct
@@ -205,35 +205,35 @@ Prompt Engineering, Multimodal Chain-of-Thought,
 Recent breakthroughs in generative artificial intelligence have fundamentally transformed computing education. 
 Large language models (LLMs) have demonstrated the ability to automatically 
 generate source code from natural language descriptions and perform well on typical 
-introductory programming problems, such as CS1 exercises (Denny et al. [ 1 ]). 
+introductory programming problems, such as CS1 exercises~\cite{denny2023conversing}. 
 To address the academic integrity concerns associated with these text-to-text models, 
 educators have increasingly shifted toward visual-based assessments and diagrams, 
-which have historically limited LLMs' problem-solving capabilities (Gutierrez et al. [ 2 ]).
+which have historically limited LLMs' problem-solving capabilities~\cite{gutierrez2024seeing}.
 This pedagogical strategy is now being challenged by the advent of large multimodal models 
 (LMMs) capable of processing both text and images. Recent empirical evaluations demonstrate 
 that LMMs can successfully solve complex, image-based computing tasks. For example, LMMs show 
 remarkable proficiency in arranging visually diverse Parsons problems without relying on text-based 
-snippets (Hou et al. [ 3 ]), and navigating algorithmic traversals on visual graph and 
-tree data structures (Gutierrez et al. [ 2 ]). Furthermore, new benchmarks reveal that 
-LMMs are increasingly being tested on their ability to interpret structured flowcharts (Singh et al. [ 4 ]), 
-and generate code directly from visually rich programming problems containing graphs, maps, and spatial data (Li et al. [ 5 ]).
+snippets~\cite{hou2024more}, and navigating algorithmic traversals on visual graph and 
+tree data structures~\cite{gutierrez2024seeing}. Furthermore, new benchmarks reveal that 
+LMMs are increasingly being tested on their ability to interpret structured flowcharts~\cite{singh2024flowvqa}, 
+and generate code directly from visually rich programming problems containing graphs, maps, and spatial data~\cite{li2024mmcode}.
 
 While the problem-solving accuracy of LMMs on visual tasks is expanding, their pedagogical utility as 
 interactive tutoring tools depends heavily on their ability to articulate how a solution was reached. 
 In text-based programming, prompt engineering and natural language interactions are crucial for resolving 
-errors and fostering computational thinking (Denny et al. [ 1 ]). For multimodal tasks, 
+errors and fostering computational thinking~\cite{denny2023conversing}. For multimodal tasks, 
 eliciting this step-by-step logic is often formalized as Multimodal Chain-of-Thought (MCoT) reasoning, 
-which simulates human-like inference by breaking down complex problems into sequential, interpretable steps (Chen et al. [ 6 ]).
+which simulates human-like inference by breaking down complex problems into sequential, interpretable steps~\cite{chen2024m3cot}.
 
 However, existing research highlights significant challenges in the explanatory capabilities of LMMs. 
 Studies indicate that current MCoT performance often relies on shallow, single-step visual reasoning or 
-defaults to textual context rather than genuine multimodal integration (Chen et al. [ 6 ]). 
-When faced with complex schematic diagrams (Zhao et al. [ 7 ]) or flowcharts requiring directional logic (Singh et al. [ 4 ]), 
+defaults to textual context rather than genuine multimodal integration~\cite{chen2024m3cot}. 
+When faced with complex schematic diagrams~\cite{zhao2025missqa} or flowcharts requiring directional logic~\cite{singh2024flowvqa}, 
 models frequently struggle to contextualize visual elements or produce accurate, multi-step explanations. 
 Furthermore, the requirement for intense reasoning over text and images simultaneously remains 
 a major hurdle for generating executable code from visual inputs. 
 Although techniques like weak-supervision-guided step-by-step explanations show promise in 
-improving interpretability for simpler image classification tasks (Jiang et al. [ 8 ]), 
+improving interpretability for simpler image classification tasks~\cite{jiang2025wise}, 
 the extent to which these capabilities translate to articulating solutions for complex computing problems is unclear.
 
 Despite rapid advancements in LMMs, a comprehensive understanding of their ability to 
