@@ -290,16 +290,46 @@ of reasoning, or whether the model can provide step-by-step explanations
 for diagram-based problem-solving, as verifiable by humans~%
 \cite{chen2024m3cot, wang2026bridging, jiang2025wise}.
 
-\subsection{Comparative Analysis of Core Methodologies}
-The current research landscape is defined by two complementary directions: 
-(i) diagram-based reasoning performance in computing tasks, and 
-(ii) interpretability-driven multimodal reasoning frameworks.
-On one hand, models such as GPT-4o, Gemini, and Claude are evaluated 
-on structured computing diagrams including graphs, trees, and flowcharts~%
-\cite{singh2024flowvqa, gutierrez2024seeing}. On the other hand, 
-frameworks such as WISE and MultiFIX~\cite{malafaia2025step} focus on improving reasoning 
-transparency through structured decomposition and symbolic alignment~%
-\cite{jiang2025wise}.
+\subsection{Comparative Analysis of Multimodal Reasoning Frameworks}
+The relative analysis of multimodal reasoning models indicates the definite 
+shift from implicit perception-based inference to structured and interpretable 
+reasoning processes. The models of reasoning, including M3CoT, WISE, and RSVP, 
+show different yet complementary methods of enhancing the quality of reasoning 
+in multimodal models.
+
+M3CoT presents a chain-of-thought paradigm that is multimodal, meaning that 
+the models should produce the intermediary steps of reasoning that would be a 
+combination of visual and textual information~\cite{chen2024m3cot}. This 
+strategy enhances the solving of multi-step tasks by breaking the complex 
+problem into a series of reasoning steps. It has been demonstrated empirically 
+that structured reasoning pipeline models are more robust in solving 
+diagram-based problems than traditional end-to-end inference algorithms.
+
+WISE, however, takes advantage of weak supervision and uses it to steer models 
+to concept-level explanations~\cite{jiang2025wise}. WISE allows models to 
+explicitly recognize and make use of discriminative features, reformulating 
+the notion of reasoning as a concept bottleneck process and reducing the use 
+of spurious correlations. This gives better interpretability as well as 
+competitive accuracy, especially in fine-grained visual understanding tasks.
+
+RSVP is an extension of these concepts to visual representation by proposing 
+segmentation of reasoning via visual prompting~\cite{lu2025rsvp}. RSVP splits 
+the image into areas that have semantically significant meaning instead of 
+considering it as one monolithic input, which enables the model to relate 
+certain visual elements to specific reasoning processes. Such a localized way 
+of reasoning promotes transparency as well as visual evidence grounding.
+
+Through these structures, a general pattern is likely to be noticed: the 
+higher the performance, the higher the extent of organized reasoning imposed 
+in the process of inference. Model systems based purely on holistic visual-text 
+alignment are able to handle simple tasks very well but fail to handle more 
+complex relational or multi-step tasks. By comparison, models that explicitly 
+represent intermediate reasoning steps are more generalized and give more 
+interpretable results.
+
+These results support the need to incorporate structured reasoning systems 
+into multimodal frameworks, especially when dealing with diagrammatic and 
+computational problem solving.
 
 \begin{table*}
 \caption{Comparison of Core Methodologies and Frameworks}
