@@ -298,7 +298,7 @@ The current research landscape is defined by two complementary directions:
 On one hand, models such as GPT-4o, Gemini, and Claude are evaluated 
 on structured computing diagrams including graphs, trees, and flowcharts~%
 \cite{singh2024flowvqa, gutierrez2024seeing}. On the other hand, 
-frameworks such as WISE, P2X, and MultiFIX~\cite{malafaia2025step} focus on improving reasoning 
+frameworks such as WISE and MultiFIX~\cite{malafaia2025step} focus on improving reasoning 
 transparency through structured decomposition and symbolic alignment~%
 \cite{jiang2025wise}.
 
@@ -397,8 +397,6 @@ Key results include:
 \begin{itemize}
     \item \textbf{Interpretability improvement:} WISE shows a $\sim$37\% 
     improvement in interpretability compared to zero-shot MCoT~\cite{jiang2025wise}.
-    \item \textbf{OOD robustness:} P2X achieves state-of-the-art results 
-    on GQA-OOD with up to 4.5\% improvement.
     \item \textbf{Concept efficiency:} $\sim$7 out of 312 concepts are used 
     to classify 200 categories.
 \end{itemize}
@@ -417,9 +415,8 @@ alignment signals~\cite{wang2026bridging}. RSVP can be used to improve
 efficiency by enhancing object granularity for visual tasks~\cite{lu2025rsvp}. 
 
 Reasoning quality can be measured using various metrics beyond accuracy. 
-Techniques such as WISE use Gini Impurity to measure decision efficiency, 
-while P2X uses BLEU-4, CIDEr-D, and IoU for both linguistic and spatial 
-alignment~\cite{jiang2025wise}. 
+Techniques such as WISE use Gini Impurity to measure decision efficiency~%
+\cite{jiang2025wise}. 
 
 Ablation studies have shown that the multimodal reasoning pipeline is 
 highly sensitive. Removing components such as Salient Concept Selection 
@@ -458,8 +455,8 @@ computer science education.
 The deconstruction of intricate problems into clear reasoning chains 
 mitigates a primary deficiency in conventional transformer architectures: 
 their propensity for ``Bag-of-Words'' behavior, which inadequately represents 
-relational structure. Frameworks like P2X make programs separate by making 
-models clearly name subjects, relations, and objects. This turns general 
+relational structure. Structured approaches decouple program elements by 
+prompting models to clearly name subjects, relations, and objects. This turns general 
 predictions into structured, step-by-step reasoning processes.
 
 The WISE framework also uses an Elimination Tree to create a hierarchical 
@@ -518,9 +515,9 @@ Long-horizon reasoning is one of the significant technical bottlenecks in
 the development of multimodal AI systems. The majority of multimodal models 
 in the MMCode benchmark cannot solve more than 20\% of the tasks that involve 
 reasoning over multiple images and code generation~\cite{li2024mmcode}. 
-Also, the P2X model requires the use of separate program generators; 
-therefore, it cannot be optimized end-to-end. It is not possible to handle 
-the single point of failure during the parsing process.
+Furthermore, neuro-symbolic frameworks often require the use of separate program 
+generators and cannot be optimized end-to-end, which introduces a 
+single point of failure during the parsing process.
 
 In Meta-analytical Insight there is an observation that both symbolic and 
 statistical approaches converge in the context of multimodal AI systems. 
