@@ -123,8 +123,8 @@
 
 \author{Yao Wang}
 \affiliation{%
-  \institution{University of Auckalnd}
-  \city{Auckalnd}
+  \institution{University of Auckland}
+  \city{Auckland}
   \country{New Zealand}}
 \email{nway918@auckland.ac.nz}
 
@@ -133,7 +133,7 @@
   \institution{University of Auckland}
   \city{Auckland}
   \country{New Zealand}}
-\email{ajan119@aucklanduni.ac.}
+\email{ajan119@aucklanduni.ac.nz}
 
 
 %%
@@ -238,8 +238,7 @@ process.
 
 \subsection{Paper Selection and Search Strategy}
 Primary literature was identified through systematic searches across three major 
-digital repositories: the ACM Digital Library, IEEE Xplore, and arXiv~%
-\cite{denny2023conversing, gutierrez2024seeing, hou2024more}. 
+digital repositories: the ACM Digital Library, IEEE Xplore, and arXiv. 
 The search targeted high-impact peer-reviewed research and technical reports 
 published between 2023 and 2026 to capture the rapid transition from text-only 
 Large Language Models (LLMs) to current frontier Multimodal Foundation Models 
@@ -250,7 +249,7 @@ Large Language Models (LLMs) to current frontier Multimodal Foundation Models
 Papers were selected based on Curricular Grounding, specifically targeting 
 ``Core Tier 1'' computer science topics including fundamental data structures 
 (graphs, trees), algorithms (flowcharts), and visual code logic 
-(Parsons problems)~\cite{gutierrez2024seeing, hou2024more}.
+(Parsons problems)~\cite{gutierrez2024seeing, hou2024more, singh2024flowvqa}.
 \begin{itemize}
     \item \textbf{Inclusion:} Priority was given to research introducing novel, 
     computationally generated benchmarks (e.g., FlowVQA, MISS-QA, POLYMATH) 
@@ -258,7 +257,7 @@ Papers were selected based on Curricular Grounding, specifically targeting
     \cite{singh2024flowvqa, gupta2024polymath, zhao2025missqa}.
     \item \textbf{Exclusion:} Studies focusing exclusively on natural scene 
     photography or text-to-text programming tasks without a visual component 
-    were omitted~\cite{gutierrez2024seeing, li2024mmcode}.
+    were omitted~\cite{denny2023conversing}.
 \end{itemize}
 
 \subsection{Evaluation Dimensions}
@@ -291,26 +290,57 @@ of reasoning, or whether the model can provide step-by-step explanations
 for diagram-based problem-solving, as verifiable by humans~%
 \cite{chen2024m3cot, wang2026bridging, jiang2025wise}.
 
-\subsection{Comparative Analysis of Core Methodologies}
-The current research landscape is defined by two complementary directions: 
-(i) diagram-based reasoning performance in computing tasks, and 
-(ii) interpretability-driven multimodal reasoning frameworks.
-On one hand, models such as GPT-4o, Gemini, and Claude are evaluated 
-on structured computing diagrams including graphs, trees, and flowcharts~%
-\cite{singh2024flowvqa, gutierrez2024seeing}. On the other hand, 
-frameworks such as WISE, P2X, and MultiFIX focus on improving reasoning 
-transparency through structured decomposition and symbolic alignment~%
-\cite{jiang2025wise}.
+\subsection{Comparative Analysis of Multimodal Reasoning Frameworks}
+The relative analysis of multimodal reasoning models indicates the definite 
+shift from implicit perception-based inference to structured and interpretable 
+reasoning processes. The models of reasoning, including M3CoT, WISE, and RSVP, 
+show different yet complementary methods of enhancing the quality of reasoning 
+in multimodal models.
+
+M3CoT presents a chain-of-thought paradigm that is multimodal, meaning that 
+the models should produce the intermediary steps of reasoning that would be a 
+combination of visual and textual information~\cite{chen2024m3cot}. This 
+strategy enhances the solving of multi-step tasks by breaking the complex 
+problem into a series of reasoning steps. It has been demonstrated empirically 
+that structured reasoning pipeline models are more robust in solving 
+diagram-based problems than traditional end-to-end inference algorithms.
+
+WISE, however, takes advantage of weak supervision and uses it to steer models 
+to concept-level explanations~\cite{jiang2025wise}. WISE allows models to 
+explicitly recognize and make use of discriminative features, reformulating 
+the notion of reasoning as a concept bottleneck process and reducing the use 
+of spurious correlations. This gives better interpretability as well as 
+competitive accuracy, especially in fine-grained visual understanding tasks.
+
+RSVP is an extension of these concepts to visual representation by proposing 
+segmentation of reasoning via visual prompting~\cite{lu2025rsvp}. RSVP splits 
+the image into areas that have semantically significant meaning instead of 
+considering it as one monolithic input, which enables the model to relate 
+certain visual elements to specific reasoning processes. Such a localized way 
+of reasoning promotes transparency as well as visual evidence grounding.
+
+Through these structures, a general pattern is likely to be noticed: the 
+higher the performance, the higher the extent of organized reasoning imposed 
+in the process of inference. Model systems based purely on holistic visual-text 
+alignment are able to handle simple tasks very well but fail to handle more 
+complex relational or multi-step tasks. By comparison, models that explicitly 
+represent intermediate reasoning steps are more generalized and give more 
+interpretable results.
+
+These results support the need to incorporate structured reasoning systems 
+into multimodal frameworks, especially when dealing with diagrammatic and 
+computational problem solving.
 
 \begin{table*}
 \caption{Comparison of Core Methodologies and Frameworks}
+\label{tab:methodologies}
 \begin{tabular}{p{0.15\linewidth} p{0.3\linewidth} p{0.25\linewidth} p{0.2\linewidth}}
 \toprule
 \textbf{Framework} & \textbf{Primary Mechanism} & \textbf{Backbone Models Used} & \textbf{Output Type} \\
 \midrule
-WISE~\cite{jiang2025wise} & Weak Supervision \& CBM Reformulation & CLIP (ViT-L/14), Qwen2-VL-7B & Multimodal Chain-of-Thought (MCoT) \\
-P2X & Program Deconstruction \& Reasoning Cells & VLMO, ALBEF & Bounding Boxes, Classes, Answers \\
-MultiFIX & Multimodal Data Fusion + Symbolic Reasoning & DL + Genetic Programming & Symbolic Expressions, Heatmaps \\
+WISE~\cite{jiang2025wise} & Weak Supervision \& Step-by-Step Explanations & CLIP-based / MLLMs & Multimodal Chain-of-Thought (MCoT) \\
+M3CoT~\cite{chen2024m3cot} & Multi-step Multimodal Chain-of-Thought Benchmark & Vision-Language Models (various) & Structured reasoning traces \\
+RSVP~\cite{lu2025rsvp} & Reasoning Segmentation via Visual Prompting & Vision-Language Models & Segmented visual reasoning outputs \\
 \bottomrule
 \end{tabular}
 \end{table*}
@@ -396,8 +426,6 @@ Key results include:
 \begin{itemize}
     \item \textbf{Interpretability improvement:} WISE shows a $\sim$37\% 
     improvement in interpretability compared to zero-shot MCoT~\cite{jiang2025wise}.
-    \item \textbf{OOD robustness:} P2X achieves state-of-the-art results 
-    on GQA-OOD with up to 4.5\% improvement.
     \item \textbf{Concept efficiency:} $\sim$7 out of 312 concepts are used 
     to classify 200 categories.
 \end{itemize}
@@ -416,9 +444,8 @@ alignment signals~\cite{wang2026bridging}. RSVP can be used to improve
 efficiency by enhancing object granularity for visual tasks~\cite{lu2025rsvp}. 
 
 Reasoning quality can be measured using various metrics beyond accuracy. 
-Techniques such as WISE use Gini Impurity to measure decision efficiency, 
-while P2X uses BLEU-4, CIDEr-D, and IoU for both linguistic and spatial 
-alignment~\cite{jiang2025wise}. 
+Techniques such as WISE use Gini Impurity to measure decision efficiency~%
+\cite{jiang2025wise}. 
 
 Ablation studies have shown that the multimodal reasoning pipeline is 
 highly sensitive. Removing components such as Salient Concept Selection 
@@ -453,22 +480,24 @@ owing to their visual characteristics are now resolvable with significant
 reliability, fundamentally contesting conventional assessment paradigms in 
 computer science education.
 
-\subsection{How well does step-by-step logic work compared to holistic inference?}
-The deconstruction of intricate problems into clear reasoning chains 
-mitigates a primary deficiency in conventional transformer architectures: 
-their propensity for ``Bag-of-Words'' behavior, which inadequately represents 
-relational structure. Frameworks like P2X make programs separate by making 
-models clearly name subjects, relations, and objects. This turns general 
-predictions into structured, step-by-step reasoning processes.
+\subsection{The Efficacy of Step-by-Step Logic vs. Holistic Inference}
+The breaking down of intricate problems into hierarchies of reasoning solves a 
+fundamental limitation of conventional transformer-based designs which can be 
+referred to as Bag-of-Words behavior in which relational dependencies are not 
+entirely represented. M3CoT frameworks explicitly implement multimodal 
+chain-of-thought reasoning, and models are required to produce intermediate 
+visual and textual reasoning stages instead of using holistic inference~%
+\cite{chen2024m3cot}. This hierarchical breakdown models outputs baseless 
+in nature into explicable courses of reasoning.
 
-The WISE framework also uses an Elimination Tree to create a hierarchical 
-reasoning structure. This tree uses counterfactual reasoning to get rid of 
-confusing categories~\cite{jiang2025wise}. The model imitates expert-level 
-diagnostic reasoning by excluding ``matching negatives,'' guaranteeing that 
-conclusions are founded on discriminative features rather than probabilistic 
-shortcuts. This is very similar to tasks that require diagram-based 
-reasoning, where knowing how nodes and edges are related is important for 
-getting the right answer.
+On the same note, the WISE model proposes an elimination-based reasoning 
+mechanism that is based on weak supervision that reduces issues of spurious 
+correlation by directing the model into discriminative features~%
+\cite{jiang2025wise}. These methods are much more similar to the reasoning 
+processes of an expert since they are systematic in the process of filtering 
+out irrelevant or misleading visual phenomena. This is so as to make sure 
+that model decisions are informed by useful associations of features as opposed 
+to statistical shortcuts.
 
 \subsection{Complexity of Structure and Cognitive Load}
 The literature consistently identifies structural density, quantified by 
@@ -517,13 +546,13 @@ Long-horizon reasoning is one of the significant technical bottlenecks in
 the development of multimodal AI systems. The majority of multimodal models 
 in the MMCode benchmark cannot solve more than 20\% of the tasks that involve 
 reasoning over multiple images and code generation~\cite{li2024mmcode}. 
-Also, the P2X model requires the use of separate program generators; 
-therefore, it cannot be optimized end-to-end. It is not possible to handle 
-the single point of failure during the parsing process.
+Furthermore, neuro-symbolic frameworks often require the use of separate program 
+generators and cannot be optimized end-to-end, which introduces a 
+single point of failure during the parsing process.
 
 In Meta-analytical Insight there is an observation that both symbolic and 
 statistical approaches converge in the context of multimodal AI systems. 
-The MultiFIX model is based on the application of symbolic reasoning with 
+The MultiFIX~\cite{malafaia2025step} model is based on the application of symbolic reasoning with 
 the help of genetic programming. The WISE model is based on the application 
 of decision tree reasoning with the help of information gain (Gini Impurity)~%
 \cite{jiang2025wise}. Although both models attempt to offer surrogate 
@@ -564,7 +593,7 @@ The key ways in which this can be achieved include:
     for detecting discrepancies between the generated explanation and visual 
     information.
     \item \textbf{Hybrid Training Strategies:} Incorporating symbolic reasoning, 
-    as in MultiFIX, into the pre-training of foundation-level multimodal models.
+    as in MultiFIX~\cite{malafaia2025step}, into the pre-training of foundation-level multimodal models.
 \end{itemize}
 These ways of proceeding highlight the need for human expertise in combination 
 with machine reasoning in order to develop robust and trustworthy AI systems.
@@ -596,6 +625,38 @@ explainable reasoning. Although multimodal models have shown remarkable
 potential in performing tasks in structured environments, there is still 
 an evolving challenge in developing robust and generalizable reasoning in 
 multimodal tasks.
+
+
+\section{Conclusion}
+This systematic review investigated whether large multimodal models (LMMs) 
+can reliably articulate the step-by-step reasoning behind their solutions to 
+image-based computing problems. Our synthesis of the literature reveals that 
+while state-of-the-art LMMs demonstrate remarkable accuracy in solving complex 
+visual tasks---such as Parsons problems~\cite{hou2024more}, graph 
+traversals~\cite{gutierrez2024seeing}, and flowcharts~%
+\cite{singh2024flowvqa}---their explanatory capabilities remain underdeveloped. 
+The high problem-solving proficiency of these models effectively neutralizes 
+the use of visual diagrams as a safeguard against academic misconduct~%
+\cite{gutierrez2024seeing, hou2024more}. However, their Multimodal 
+Chain-of-Thought (MCoT) reasoning frequently suffers from topological 
+deficiencies and an overreliance on textual context rather than genuine visual 
+grounding~\cite{singh2024flowvqa, denny2023conversing}.
+
+Despite these current limitations, emerging interpretability-driven frameworks, 
+such as WISE~\cite{jiang2025wise} and XMCC~\cite{wang2026bridging}, demonstrate 
+that structured reasoning can simultaneously enhance both a model's accuracy 
+and its transparency. As the ``black box'' of multimodal reasoning becomes 
+clearer, the pedagogical paradigm must adapt. Educators can no longer rely on 
+adversarial, ``AI-proof'' assessment methods; instead, they must embrace 
+authentic, mastery-based assessments and leverage these increasingly interpretable 
+LMMs as interactive digital tutors capable of providing scaffolded, step-by-step 
+support~\cite{ramachandran2025how, gutierrez2024seeing}. Future research should 
+prioritize human-in-the-loop interventions and the refinement of spatial 
+reasoning to fully realize the educational potential of multimodal AI.
+
+
+\vspace{1em}
+\noindent \textit{We give permission for this assignment to be used in future for educational purposes.}
 
 %%
 %% The next two lines define the bibliography style to be used, and
