@@ -44,7 +44,7 @@
 %% for your publication.
 %%
 %%
-\documentclass[sigconf]{acmart}
+\documentclass[sigconf, nonacm]{acmart}
 %%
 %% \BibTeX command to typeset BibTeX logo in the docs
 \AtBeginDocument{%
@@ -56,14 +56,7 @@
 %% values in them; it is your responsibility as an author to replace
 %% the commands and values with those provided to you when you
 %% complete the rights form.
-\setcopyright{acmlicensed}
-\copyrightyear{2018}
-\acmYear{2018}
-\acmDOI{XXXXXXX.XXXXXXX}
-%% These commands are for a PROCEEDINGS abstract or paper.
-\acmConference[Conference acronym 'XX]{Make sure to enter the correct
-  conference title from your rights confirmation email}{June 03--05,
-  2018}{Woodstock, NY}
+\setcopyright{none}
 %%
 %%  Uncomment \acmBooktitle if the title of the proceedings is different
 %%  from ``Proceedings of ...''!
@@ -142,13 +135,6 @@
   \country{New Zealand}}
 \email{ajan119@aucklanduni.ac.}
 
-%%
-%% By default, the full list of authors will be used in the page
-%% headers. Often, this list is too long, and will overlap
-%% other information printed in the page headers. This command allows
-%% the author to define a more concise list
-%% of authors' names for this purpose.
-\renewcommand{\shortauthors}{Trovato et al.}
 
 %%
 %% The abstract is a short summary of the work to be presented in the
@@ -205,35 +191,35 @@ Prompt Engineering, Multimodal Chain-of-Thought,
 Recent breakthroughs in generative artificial intelligence have fundamentally transformed computing education. 
 Large language models (LLMs) have demonstrated the ability to automatically 
 generate source code from natural language descriptions and perform well on typical 
-introductory programming problems, such as CS1 exercises (Denny et al. [ 1 ]). 
+introductory programming problems, such as CS1 exercises~\cite{denny2023conversing}. 
 To address the academic integrity concerns associated with these text-to-text models, 
 educators have increasingly shifted toward visual-based assessments and diagrams, 
-which have historically limited LLMs' problem-solving capabilities (Gutierrez et al. [ 2 ]).
+which have historically limited LLMs' problem-solving capabilities~\cite{gutierrez2024seeing}.
 This pedagogical strategy is now being challenged by the advent of large multimodal models 
 (LMMs) capable of processing both text and images. Recent empirical evaluations demonstrate 
 that LMMs can successfully solve complex, image-based computing tasks. For example, LMMs show 
 remarkable proficiency in arranging visually diverse Parsons problems without relying on text-based 
-snippets (Hou et al. [ 3 ]), and navigating algorithmic traversals on visual graph and 
-tree data structures (Gutierrez et al. [ 2 ]). Furthermore, new benchmarks reveal that 
-LMMs are increasingly being tested on their ability to interpret structured flowcharts (Singh et al. [ 4 ]), 
-and generate code directly from visually rich programming problems containing graphs, maps, and spatial data (Li et al. [ 5 ]).
+snippets~\cite{hou2024more}, and navigating algorithmic traversals on visual graph and 
+tree data structures~\cite{gutierrez2024seeing}. Furthermore, new benchmarks reveal that 
+LMMs are increasingly being tested on their ability to interpret structured flowcharts~\cite{singh2024flowvqa}, 
+and generate code directly from visually rich programming problems containing graphs, maps, and spatial data~\cite{li2024mmcode}.
 
 While the problem-solving accuracy of LMMs on visual tasks is expanding, their pedagogical utility as 
 interactive tutoring tools depends heavily on their ability to articulate how a solution was reached. 
 In text-based programming, prompt engineering and natural language interactions are crucial for resolving 
-errors and fostering computational thinking (Denny et al. [ 1 ]). For multimodal tasks, 
+errors and fostering computational thinking~\cite{denny2023conversing}. For multimodal tasks, 
 eliciting this step-by-step logic is often formalized as Multimodal Chain-of-Thought (MCoT) reasoning, 
-which simulates human-like inference by breaking down complex problems into sequential, interpretable steps (Chen et al. [ 6 ]).
+which simulates human-like inference by breaking down complex problems into sequential, interpretable steps~\cite{chen2024m3cot}.
 
 However, existing research highlights significant challenges in the explanatory capabilities of LMMs. 
 Studies indicate that current MCoT performance often relies on shallow, single-step visual reasoning or 
-defaults to textual context rather than genuine multimodal integration (Chen et al. [ 6 ]). 
-When faced with complex schematic diagrams (Zhao et al. [ 7 ]) or flowcharts requiring directional logic (Singh et al. [ 4 ]), 
+defaults to textual context rather than genuine multimodal integration~\cite{chen2024m3cot}. 
+When faced with complex schematic diagrams~\cite{zhao2025missqa} or flowcharts requiring directional logic~\cite{singh2024flowvqa}, 
 models frequently struggle to contextualize visual elements or produce accurate, multi-step explanations. 
 Furthermore, the requirement for intense reasoning over text and images simultaneously remains 
 a major hurdle for generating executable code from visual inputs. 
 Although techniques like weak-supervision-guided step-by-step explanations show promise in 
-improving interpretability for simpler image classification tasks (Jiang et al. [ 8 ]), 
+improving interpretability for simpler image classification tasks~\cite{jiang2025wise}, 
 the extent to which these capabilities translate to articulating solutions for complex computing problems is unclear.
 
 Despite rapid advancements in LMMs, a comprehensive understanding of their ability to 
@@ -244,523 +230,372 @@ Therefore, this literature review is guided by the following primary research qu
 
 Can multimodal models explain the step-by-step reasoning behind solutions to image-based computing problems?
 
-\section{Template Overview}
-As noted in the introduction, the ``\verb|acmart|'' document class can
-be used to prepare many different kinds of documentation --- a
-double-anonymous initial submission of a full-length technical paper, a
-two-page SIGGRAPH Emerging Technologies abstract, a ``camera-ready''
-journal article, a SIGCHI Extended Abstract, and more --- all by
-selecting the appropriate {\itshape template style} and {\itshape
-  template parameters}.
+\section{Methods}
+In accordance with PRISMA standards for systematic reviews, the methodology for 
+evaluating the efficacy of Large Multimodal Models (LMMs) in solving 
+computing-based visual questions involved a multi-stage selection and synthesis 
+process.
 
-This document will explain the major features of the document
-class. For further information, the {\itshape \LaTeX\ User's Guide} is
-available from
-\url{https://www.acm.org/publications/proceedings-template}.
+\subsection{Paper Selection and Search Strategy}
+Primary literature was identified through systematic searches across three major 
+digital repositories: the ACM Digital Library, IEEE Xplore, and arXiv~%
+\cite{denny2023conversing, gutierrez2024seeing, hou2024more}. 
+The search targeted high-impact peer-reviewed research and technical reports 
+published between 2023 and 2026 to capture the rapid transition from text-only 
+Large Language Models (LLMs) to current frontier Multimodal Foundation Models 
+(MFMs) such as GPT-4o, Gemini 1.5 Pro, and Claude 3.5 Sonnet~%
+\cite{gutierrez2024seeing, hou2024more, gupta2024polymath}.
 
-\subsection{Template Styles}
-
-The primary parameter given to the ``\verb|acmart|'' document class is
-the {\itshape template style} which corresponds to the kind of publication
-or SIG publishing the work. This parameter is enclosed in square
-brackets and is a part of the {\verb|documentclass|} command:
-\begin{verbatim}
-  \documentclass[STYLE]{acmart}
-\end{verbatim}
-
-Journals use one of three template styles. All but three ACM journals
-use the {\verb|acmsmall|} template style:
+\subsection{Inclusion and Exclusion Criteria}
+Papers were selected based on Curricular Grounding, specifically targeting 
+``Core Tier 1'' computer science topics including fundamental data structures 
+(graphs, trees), algorithms (flowcharts), and visual code logic 
+(Parsons problems)~\cite{gutierrez2024seeing, hou2024more}.
 \begin{itemize}
-\item {\texttt{acmsmall}}: The default journal template style.
-\item {\texttt{acmlarge}}: Used by JOCCH and TAP.
-\item {\texttt{acmtog}}: Used by TOG.
+    \item \textbf{Inclusion:} Priority was given to research introducing novel, 
+    computationally generated benchmarks (e.g., FlowVQA, MISS-QA, POLYMATH) 
+    to mitigate ``data leakage'' from existing online educational resources~%
+    \cite{singh2024flowvqa, gupta2024polymath, zhao2025missqa}.
+    \item \textbf{Exclusion:} Studies focusing exclusively on natural scene 
+    photography or text-to-text programming tasks without a visual component 
+    were omitted~\cite{gutierrez2024seeing, li2024mmcode}.
 \end{itemize}
 
-The majority of conference proceedings documentation will use the {\verb|acmconf|} template style.
+\subsection{Evaluation Dimensions}
+Synthesized studies were evaluated across four critical dimensions for 
+diagram-based questions:
 \begin{itemize}
-\item {\texttt{sigconf}}: The default proceedings template style.
-\item{\texttt{sigchi}}: Used for SIGCHI conference articles.
-\item{\texttt{sigplan}}: Used for SIGPLAN conference articles.
+    \item \textbf{Structural Complexity:} The impact of variations in node count, 
+    edge density, and spatial layout on reasoning accuracy~%
+    \cite{singh2024flowvqa, gutierrez2024seeing}.
+    \item \textbf{Reasoning Depth:} The distinction between single-hop Fact 
+    Retrieval (localized information) and macroscopic Topological Reasoning 
+    (structural logic)~\cite{singh2024flowvqa, chen2024m3cot}.
+    \item \textbf{Aesthetic Robustness:} Sensitivity to non-structural variations 
+    such as node colour, rendered edge width, and font styles~%
+    \cite{gutierrez2024seeing, hou2024more}.
+    \item \textbf{Visual Grounding (VG):} The ability of models to correctly 
+    associate textual generation with specific image regions~%
+    \cite{ramachandran2025how, lu2025rsvp}.
 \end{itemize}
 
-\subsection{Template Parameters}
+\section{Results: Objective Synthesis of Multimodal Reasoning Frameworks}
+The synthesis of the included studies demonstrates a notable gap in the 
+performance levels based on the structural nature and linearity of visual 
+computing tasks, in addition to a paradigm shift in the field towards 
+high-performing multimodal reasoning frameworks~%
+\cite{singh2024flowvqa, gutierrez2024seeing, chen2024m3cot}. 
+As the application of MLLMs continues to grow in high-stakes settings, 
+the research has shifted from the accuracy of predictions to the transparency 
+of reasoning, or whether the model can provide step-by-step explanations 
+for diagram-based problem-solving, as verifiable by humans~%
+\cite{chen2024m3cot, wang2026bridging, jiang2025wise}.
 
-In addition to specifying the {\itshape template style} to be used in
-formatting your work, there are a number of {\itshape template parameters}
-which modify some part of the applied template style. A complete list
-of these parameters can be found in the {\itshape \LaTeX\ User's Guide.}
+\subsection{Comparative Analysis of Core Methodologies}
+The current research landscape is defined by two complementary directions: 
+(i) diagram-based reasoning performance in computing tasks, and 
+(ii) interpretability-driven multimodal reasoning frameworks.
+On one hand, models such as GPT-4o, Gemini, and Claude are evaluated 
+on structured computing diagrams including graphs, trees, and flowcharts~%
+\cite{singh2024flowvqa, gutierrez2024seeing}. On the other hand, 
+frameworks such as WISE, P2X, and MultiFIX focus on improving reasoning 
+transparency through structured decomposition and symbolic alignment~%
+\cite{jiang2025wise}.
 
-Frequently-used parameters, or combinations of parameters, include:
+\begin{table*}
+\caption{Comparison of Core Methodologies and Frameworks}
+\begin{tabular}{p{0.15\linewidth} p{0.3\linewidth} p{0.25\linewidth} p{0.2\linewidth}}
+\toprule
+\textbf{Framework} & \textbf{Primary Mechanism} & \textbf{Backbone Models Used} & \textbf{Output Type} \\
+\midrule
+WISE~\cite{jiang2025wise} & Weak Supervision \& CBM Reformulation & CLIP (ViT-L/14), Qwen2-VL-7B & Multimodal Chain-of-Thought (MCoT) \\
+P2X & Program Deconstruction \& Reasoning Cells & VLMO, ALBEF & Bounding Boxes, Classes, Answers \\
+MultiFIX & Multimodal Data Fusion + Symbolic Reasoning & DL + Genetic Programming & Symbolic Expressions, Heatmaps \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+The WISE Logic Hierarchy proposes the following structure in the reasoning pipeline:
 \begin{itemize}
-\item {\texttt{anonymous,review}}: Suitable for a ``double-anonymous''
-  conference submission. Anonymizes the work and includes line
-  numbers. Use with the \texttt{\string\acmSubmissionID} command to print the
-  submission's unique ID on each page of the work.
-\item{\texttt{authorversion}}: Produces a version of the work suitable
-  for posting by the author.
-\item{\texttt{screen}}: Produces colored hyperlinks.
+    \item \textbf{Prior Tree:} Category-level priors for efficient paths in the reasoning process
+    \item \textbf{Affirmation Tree:} Supporting evidence specific to the instance
+    \item \textbf{Elimination Tree:} Utilizing counterfactuals to eliminate incorrect paths
 \end{itemize}
+This hierarchy has close ties to the diagram reasoning task because it involves 
+both identifying components and relationships~\cite{jiang2025wise}.
 
-This document uses the following string as the first command in the
-source file:
-\begin{verbatim}
-\documentclass[sigconf]{acmart}
-\end{verbatim}
+\subsection{Performance on Foundational Computing Diagrams}
+MFMs have high skills in solving linear and hierarchical diagrams but face 
+difficulties in non-linear diagrams~\cite{gutierrez2024seeing, hou2024more}. 
+GPT-4V scored a near-perfect percentage of 96.7\% on visual Parsons problems, 
+including all representations such as Runestone and Epplets~\cite{hou2024more}.
+In hierarchical data structures, GPT-4o scored the highest at 87.6\% on 
+tree-based structures, while there was a drastic fall in accuracy to 44.7\% 
+on non-hierarchical graphs, showing a limitation in dealing with complex 
+relational dependencies~\cite{gutierrez2024seeing}.
 
-\section{Modifications}
+\begin{table*}
+\caption{Comparative Model Accuracy (\%) Across Diagrammatic Benchmarks}
+\label{tab:accuracy}
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Model Family} & \textbf{Parsons~\cite{hou2024more}} & \textbf{Trees (BST)~\cite{gutierrez2024seeing}} & \textbf{Graphs (UG/DG)~\cite{gutierrez2024seeing}} & \textbf{FlowVQA~\cite{singh2024flowvqa}} & \textbf{Schematics~\cite{zhao2025missqa}} \\
+\midrule
+GPT-4o/V & 96.7 & 92.5 & 44.7 & 61.2 & 63.0 \\
+Gemini 1.5 & 69.2 (Bard) & 70.8 (Pro) & 56.2 (Flash) & 49.5 (Pro) & 67.3 (Flash) \\
+Claude 3.5/Opus & --- & 63.1 (Opus) & 25.7 (Opus) & --- & 78.3 (o4-mini) \\
+Human Expert & 100.0 & 95.1 & 75.0 & 85.3 & 89.0 \\
+\bottomrule
+\end{tabular}
+\end{table*}
 
-Modifying the template --- including but not limited to: adjusting
-margins, typeface sizes, line spacing, paragraph and list definitions,
-and the use of the \verb|\vspace| command to manually adjust the
-vertical spacing between elements of your work --- is not allowed.
+\subsection{Strengths and Failure Modes}
+A common trend observed with all diagram-based benchmarks is the existence 
+of a topological reasoning deficiency. This is evident with the FlowVQA model, 
+where performance is significantly higher on Fact Retrieval (T1) than 
+Topological reasoning (T4) tasks. This indicates a deficiency in multi-step 
+topological reasoning capabilities. Accuracy is observed to dip drastically 
+with an increase in the complexity of the diagrams, reducing from 51\% to 34\% 
+with an increase in complexity from simple flowcharts to complex ones~%
+\cite{singh2024flowvqa}.
 
-{\bfseries Your document will be returned to you for revision if
-  modifications are discovered.}
+Directional biases point to the deficiency in true visual grounding. 
+This is evident with the performance drop of up to 15\% with an inversion 
+of the flowcharts from top-down to bottom-up. This indicates that the model 
+is not performing true visual grounding but is instead relying on prior 
+knowledge about the orientation of the diagrams~%
+\cite{singh2024flowvqa, ramachandran2025how}.
 
-\section{Typefaces}
+An analysis of the errors with the POLYMATH model indicates that around 
+60\% of the errors are due to logical errors, while around 25\% are due 
+to spatial errors. This indicates a deficiency in reasoning consistency 
+and spatial understanding~\cite{gupta2024polymath}.
 
-The ``\verb|acmart|'' document class requires the use of the
-``Libertine'' typeface family. Your \TeX\ installation should include
-this set of packages. Please do not substitute other typefaces. The
-``\verb|lmodern|'' and ``\verb|ltimes|'' packages should not be used,
-as they will override the built-in typeface families.
+\subsection{Quantitative Benchmarking of Accuracy and Interpretability}
+Experimental results on multimodal reasoning benchmarks 
+(CUB, SkinCon, LAD, GQA) show that the structured reasoning framework 
+improves both accuracy and interpretability~\cite{jiang2025wise}.
 
-\section{Title Information}
-
-The title of your work should use capital letters appropriately -
-\url{https://capitalizemytitle.com/} has useful rules for
-capitalization. Use the {\verb|title|} command to define the title of
-your work. If your work has a subtitle, define it with the
-{\verb|subtitle|} command.  Do not insert line breaks in your title.
-
-If your title is lengthy, you must define a short version to be used
-in the page headers, to prevent overlapping text. The \verb|title|
-command has a ``short title'' parameter:
-\begin{verbatim}
-  \title[short title]{full title}
-\end{verbatim}
-
-\section{Authors and Affiliations}
-
-Each author must be defined separately for accurate metadata
-identification.  As an exception, multiple authors may share one
-affiliation. Authors' names should not be abbreviated; use full first
-names wherever possible. Include authors' e-mail addresses whenever
-possible.
-
-Grouping authors' names or e-mail addresses, or providing an ``e-mail
-alias,'' as shown below, is not acceptable:
-\begin{verbatim}
-  \author{Brooke Aster, David Mehldau}
-  \email{dave,judy,steve@university.edu}
-  \email{firstname.lastname@phillips.org}
-\end{verbatim}
-
-The \verb|authornote| and \verb|authornotemark| commands allow a note
-to apply to multiple authors --- for example, if the first two authors
-of an article contributed equally to the work.
-
-If your author list is lengthy, you must define a shortened version of
-the list of authors to be used in the page headers, to prevent
-overlapping text. The following command should be placed just after
-the last \verb|\author{}| definition:
-\begin{verbatim}
-  \renewcommand{\shortauthors}{McCartney, et al.}
-\end{verbatim}
-Omitting this command will force the use of a concatenated list of all
-of the authors' names, which may result in overlapping text in the
-page headers.
-
-The article template's documentation, available at
-\url{https://www.acm.org/publications/proceedings-template}, has a
-complete explanation of these commands and tips for their effective
-use.
-
-Note that authors' addresses are mandatory for journal articles.
-
-\section{Rights Information}
-
-Authors of any work published by ACM will need to complete a rights
-form. Depending on the kind of work, and the rights management choice
-made by the author, this may be copyright transfer, permission,
-license, or an OA (open access) agreement.
-
-Regardless of the rights management choice, the author will receive a
-copy of the completed rights form once it has been submitted. This
-form contains \LaTeX\ commands that must be copied into the source
-document. When the document source is compiled, these commands and
-their parameters add formatted text to several areas of the final
-document:
-\begin{itemize}
-\item the ``ACM Reference Format'' text on the first page.
-\item the ``rights management'' text on the first page.
-\item the conference information in the page header(s).
-\end{itemize}
-
-Rights information is unique to the work; if you are preparing several
-works for an event, make sure to use the correct set of commands with
-each of the works.
-
-The ACM Reference Format text is required for all articles over one
-page in length, and is optional for one-page articles (abstracts).
-
-\section{CCS Concepts and User-Defined Keywords}
-
-Two elements of the ``acmart'' document class provide powerful
-taxonomic tools for you to help readers find your work in an online
-search.
-
-The ACM Computing Classification System ---
-\url{https://www.acm.org/publications/class-2012} --- is a set of
-classifiers and concepts that describe the computing
-discipline. Authors can select entries from this classification
-system, via \url{https://dl.acm.org/ccs/ccs.cfm}, and generate the
-commands to be included in the \LaTeX\ source.
-
-User-defined keywords are a comma-separated list of words and phrases
-of the authors' choosing, providing a more flexible way of describing
-the research being presented.
-
-CCS concepts and user-defined keywords are required for for all
-articles over two pages in length, and are optional for one- and
-two-page articles (or abstracts).
-
-\section{Sectioning Commands}
-
-Your work should use standard \LaTeX\ sectioning commands:
-\verb|\section|, \verb|\subsection|, \verb|\subsubsection|,
-\verb|\paragraph|, and \verb|\subparagraph|. The sectioning levels up to
-\verb|\subsusection| should be numbered; do not remove the numbering
-from the commands.
-
-Simulating a sectioning command by setting the first word or words of
-a paragraph in boldface or italicized text is {\bfseries not allowed.}
-
-Below are examples of sectioning commands.
-
-\subsection{Subsection}
-\label{sec:subsection}
-
-This is a subsection.
-
-\subsubsection{Subsubsection}
-\label{sec:subsubsection}
-
-This is a subsubsection.
-
-\paragraph{Paragraph}
-
-This is a paragraph.
-
-\subparagraph{Subparagraph}
-
-This is a subparagraph.
-
-\section{Tables}
-
-The ``\verb|acmart|'' document class includes the ``\verb|booktabs|''
-package --- \url{https://ctan.org/pkg/booktabs} --- for preparing
-high-quality tables.
-
-Table captions are placed {\itshape above} the table.
-
-Because tables cannot be split across pages, the best placement for
-them is typically the top of the page nearest their initial cite.  To
-ensure this proper ``floating'' placement of tables, use the
-environment \textbf{table} to enclose the table's contents and the
-table caption.  The contents of the table itself must go in the
-\textbf{tabular} environment, to be aligned properly in rows and
-columns, with the desired horizontal and vertical rules.  Again,
-detailed instructions on \textbf{tabular} material are found in the
-\textit{\LaTeX\ User's Guide}.
-
-Immediately following this sentence is the point at which
-Table~\ref{tab:freq} is included in the input file; compare the
-placement of the table here with the table in the printed output of
-this document.
-
-\begin{table}
-  \caption{Frequency of Special Characters}
-  \label{tab:freq}
-  \begin{tabular}{ccl}
-    \toprule
-    Non-English or Math&Frequency&Comments\\
-    \midrule
-    \O & 1 in 1,000& For Swedish names\\
-    $\pi$ & 1 in 5& Common in math\\
-    \$ & 4 in 5 & Used in business\\
-    $\Psi^2_1$ & 1 in 40,000& Unexplained usage\\
-  \bottomrule
+\begin{table}[h]
+\caption{Quantitative Benchmarking of Accuracy and Interpretability}
+\label{tab:interpretability_benchmarks}
+\centering
+\begin{tabular}{lccc}
+\toprule
+\textbf{Dataset} & \textbf{Baseline} & \textbf{MCoT-Guided} & \textbf{Interpretability} \\
+\midrule
+CUB (Birds) & 82.40\% & 83.69\% & 65.03\% \\
+SkinCon-9 & 60.37\% & 62.23\% & 93.45\% \\
+LAD-H & 59.02\% & 61.61\% & 83.44\% \\
+GQA & 60.78\% & 64.13\% & 85.49\% \\
+\bottomrule
 \end{tabular}
 \end{table}
 
-To set a wider table, which takes up the whole width of the page's
-live area, use the environment \textbf{table*} to enclose the table's
-contents and the table caption.  As with a single-column table, this
-wide table will ``float'' to a location deemed more
-desirable. Immediately following this sentence is the point at which
-Table~\ref{tab:commands} is included in the input file; again, it is
-instructive to compare the placement of the table here with the table
-in the printed output of this document.
+Key results include:
+\begin{itemize}
+    \item \textbf{Interpretability improvement:} WISE shows a $\sim$37\% 
+    improvement in interpretability compared to zero-shot MCoT~\cite{jiang2025wise}.
+    \item \textbf{OOD robustness:} P2X achieves state-of-the-art results 
+    on GQA-OOD with up to 4.5\% improvement.
+    \item \textbf{Concept efficiency:} $\sim$7 out of 312 concepts are used 
+    to classify 200 categories.
+\end{itemize}
+These results show that reasoning structure contributes to interpretability 
+improvement as well as performance improvement.
 
-\begin{table*}
-  \caption{Some Typical Commands}
-  \label{tab:commands}
-  \begin{tabular}{ccl}
-    \toprule
-    Command &A Number & Comments\\
-    \midrule
-    \texttt{{\char'134}author} & 100& Author \\
-    \texttt{{\char'134}table}& 300 & For tables\\
-    \texttt{{\char'134}table*}& 400& For wider tables\\
-    \bottomrule
-  \end{tabular}
-\end{table*}
+\subsection{Reasoning Quality and Prompting Strategies}
+Prompt engineering continues to play a vital role in improving multimodal 
+reasoning efficiency~\cite{singh2024flowvqa, denny2023conversing}. 
+Techniques such as Multimodal Chain-of-Thought (M3CoT) can be used to 
+decompose complex problems into simpler ones for better reasoning 
+efficiency but at a computational cost~\cite{chen2024m3cot}. 
+Techniques such as Explainable CoT Compression (XMCC) can be used to 
+improve efficiency by reducing redundant steps while still maintaining 
+alignment signals~\cite{wang2026bridging}. RSVP can be used to improve 
+efficiency by enhancing object granularity for visual tasks~\cite{lu2025rsvp}. 
 
-Always use midrule to separate table header rows from data rows, and
-use it only for this purpose. This enables assistive technologies to
-recognise table headers and support their users in navigating tables
-more easily.
+Reasoning quality can be measured using various metrics beyond accuracy. 
+Techniques such as WISE use Gini Impurity to measure decision efficiency, 
+while P2X uses BLEU-4, CIDEr-D, and IoU for both linguistic and spatial 
+alignment~\cite{jiang2025wise}. 
 
-\section{Math Equations}
-You may want to display math equations in three distinct styles:
-inline, numbered or non-numbered display.  Each of the three are
-discussed in the next sections.
+Ablation studies have shown that the multimodal reasoning pipeline is 
+highly sensitive. Removing components such as Salient Concept Selection 
+can result in a reduction in interpretability of more than 50\%, while 
+removing program disentangling affects accuracy~\cite{jiang2025wise}.
 
-\subsection{Inline (In-text) Equations}
-A formula that appears in the running text is called an inline or
-in-text formula.  It is produced by the \textbf{math} environment,
-which can be invoked with the usual
-\texttt{{\char'134}begin\,\ldots{\char'134}end} construction or with
-the short form \texttt{\$\,\ldots\$}. You can use any of the symbols
-and structures, from $\alpha$ to $\omega$, available in
-\LaTeX~\cite{Lamport:LaTeX}; this section will simply show a few
-examples of in-text equations in context. Notice how this equation:
-\begin{math}
-  \lim_{n\rightarrow \infty}x=0
-\end{math},
-set here in in-line math style, looks slightly different when
-set in display style.  (See next section).
+\section{Discussion: Understanding the Limits of Explainable Multimodal AI}
+The strategic significance of these results resides in their capacity to 
+transcend mere data extraction, advancing towards structured, interpretable 
+reasoning. By examining the quality and dependability of model-generated 
+rationales, the discipline evolves from mere classification to a framework 
+in which models are not only precise but also ``right for the right reasons,'' 
+thereby reducing dependence on dataset shortcuts and superficial 
+correlations~\cite{chen2024m3cot, wang2026bridging, jiang2025wise}. 
+This change is especially important for diagram-based computing tasks, where 
+how clear the reasoning is affects trust, usability, and educational value.
 
-\subsection{Display Equations}
-A numbered display equation---one set off by vertical space from the
-text and centered horizontally---is produced by the \textbf{equation}
-environment. An unnumbered display equation is produced by the
-\textbf{displaymath} environment.
+\subsection{Trends: The Visual Safeguard is Losing Its Power}
+The high level of skill that models like GPT-4V have in solving Parsons 
+problems, even when there is background noise or UI elements, shows that 
+visual programming is no longer a good way to protect academic 
+integrity~\cite{hou2024more}. Multimodal models have successfully bridged 
+the transcription gap that previously constrained text-only LLMs, 
+facilitating the seamless interpretation of structured visual inputs, 
+including code blocks, trees, and flowcharts~%
+\cite{gutierrez2024seeing, hou2024more}.
 
-Again, in either environment, you can use any of the symbols and
-structures available in \LaTeX\@; this section will just give a couple
-of examples of display equations in context.  First, consider the
-equation, shown as an inline equation above:
-\begin{equation}
-  \lim_{n\rightarrow \infty}x=0
-\end{equation}
-Notice how it is formatted somewhat differently in
-the \textbf{displaymath}
-environment.  Now, we'll enter an unnumbered equation:
-\begin{displaymath}
-  \sum_{i=0}^{\infty} x + 1
-\end{displaymath}
-and follow it with another numbered equation:
-\begin{equation}
-  \sum_{i=0}^{\infty}x_i=\int_{0}^{\pi+2} f
-\end{equation}
-just to demonstrate \LaTeX's able handling of numbering.
+This trend is in line with bigger changes in multimodal reasoning, where 
+models are putting perception and reasoning into the same pipelines more 
+and more. Consequently, tasks that were formerly impervious to automation 
+owing to their visual characteristics are now resolvable with significant 
+reliability, fundamentally contesting conventional assessment paradigms in 
+computer science education.
 
-\section{Figures}
+\subsection{How well does step-by-step logic work compared to holistic inference?}
+The deconstruction of intricate problems into clear reasoning chains 
+mitigates a primary deficiency in conventional transformer architectures: 
+their propensity for ``Bag-of-Words'' behavior, which inadequately represents 
+relational structure. Frameworks like P2X make programs separate by making 
+models clearly name subjects, relations, and objects. This turns general 
+predictions into structured, step-by-step reasoning processes.
 
-The ``\verb|figure|'' environment should be used for figures. One or
-more images can be placed within a figure. If your figure contains
-third-party material, you must clearly identify it as such, as shown
-in the example below.
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\linewidth]{sample-franklin}
-  \caption{1907 Franklin Model D roadster. Photograph by Harris \&
-    Ewing, Inc. [Public domain], via Wikimedia
-    Commons. (\url{https://goo.gl/VLCRBB}).}
-  \Description{A woman and a girl in white dresses sit in an open car.}
-\end{figure}
+The WISE framework also uses an Elimination Tree to create a hierarchical 
+reasoning structure. This tree uses counterfactual reasoning to get rid of 
+confusing categories~\cite{jiang2025wise}. The model imitates expert-level 
+diagnostic reasoning by excluding ``matching negatives,'' guaranteeing that 
+conclusions are founded on discriminative features rather than probabilistic 
+shortcuts. This is very similar to tasks that require diagram-based 
+reasoning, where knowing how nodes and edges are related is important for 
+getting the right answer.
 
-Your figures should contain a caption which describes the figure to
-the reader.
+\subsection{Complexity of Structure and Cognitive Load}
+The literature consistently identifies structural density, quantified by 
+the number of nodes and edges, as the principal factor contributing to 
+performance degradation in multimodal reasoning tasks~%
+\cite{singh2024flowvqa, gutierrez2024seeing}. As diagrams get more 
+complicated, models have to deal with more interdependent relationships, 
+which makes it harder for people to think and less accurate.
 
-Figure captions are placed {\itshape below} the figure.
+Multi-step reasoning (e.g., MCoT) has a high cognitive load that makes 
+performance drop by at least 29.06\% compared to single-step tasks~%
+\cite{chen2024m3cot}. This underscores a significant constraint: although 
+structured reasoning enhances interpretability, it concurrently imposes 
+computational and cognitive burdens.
 
-Every figure should also have a figure description unless it is purely
-decorative. These descriptions convey what’s in the image to someone
-who cannot see it. They are also used by search engine crawlers for
-indexing images, and when images cannot be loaded.
+The ``Textual Paradox'' seen in the POLYMATH benchmark makes this limitation 
+even clearer. Models do 4--7\% better when they are given text descriptions 
+of diagrams instead of visual inputs. This suggests that current systems still 
+rely a lot on language-based reasoning and don't fully understand visual 
+logic yet~\cite{gupta2024polymath}. This strengthens the idea that multimodal 
+integration is not yet finished.
 
-A figure description must be unformatted plain text less than 2000
-characters long (including spaces).  {\bfseries Figure descriptions
-  should not repeat the figure caption – their purpose is to capture
-  important information that is not already provided in the caption or
-  the main text of the paper.} For figures that convey important and
-complex new information, a short text description may not be
-adequate. More complex alternative descriptions can be placed in an
-appendix and referenced in a short figure description. For example,
-provide a data table capturing the information in a bar chart, or a
-structured list representing a graph.  For additional information
-regarding how best to write figure descriptions and why doing this is
-so important, please see
-\url{https://www.acm.org/publications/taps/describing-figures/}.
+\subsection{The Trade-off Between Interpretability and Accuracy and How They Work Together}
+A substantial advancement in contemporary research is the contestation of 
+the conventional ``interpretability-accuracy trade-off.'' Empirical evidence 
+indicates that structured reasoning can enhance both interpretability and 
+accuracy concurrently~\cite{jiang2025wise}.
 
-\subsection{The ``Teaser Figure''}
+For instance, in the SkinCon-9 dataset, there is a 1.86\% improvement in 
+accuracy and a big improvement in how easy it is to understand. This implies 
+that reasoning functions as a corrective mechanism: when visual perception 
+is noisy or ambiguous, structured reasoning allows the model to concentrate 
+on significant features and eliminate extraneous information.
 
-A ``teaser figure'' is an image, or set of images in one figure, that
-are placed after all author and affiliation information, and before
-the body of the article, spanning the page. If you wish to have such a
-figure in your article, place the command immediately before the
-\verb|\maketitle| command:
-\begin{verbatim}
-  \begin{teaserfigure}
-    \includegraphics[width=\textwidth]{sampleteaser}
-    \caption{figure caption}
-    \Description{figure description}
-  \end{teaserfigure}
-\end{verbatim}
+Black-box models, on the other hand, don't have this internal correction 
+system, which makes them more likely to make mistakes that get worse over 
+time. So, interpretability shouldn't be seen as a limit, but as a way to 
+make multimodal reasoning strong and reliable.
 
-\section{Citations and Bibliographies}
+\subsection{Research Gaps, Unresolved Challenges, and Evidence Strength}
+Despite these advances, there exist some significant challenges that need 
+to be overcome in the development of reliable multimodal AI systems.
 
-The use of \BibTeX\ for the preparation and formatting of one's
-references is strongly recommended. Authors' names should be complete
---- use full first names (``Donald E. Knuth'') not initials
-(``D. E. Knuth'') --- and the salient identifying features of a
-reference should be included: title, year, volume, number, pages,
-article DOI, etc.
+\subsubsection{Technical Bottlenecks}
+Long-horizon reasoning is one of the significant technical bottlenecks in 
+the development of multimodal AI systems. The majority of multimodal models 
+in the MMCode benchmark cannot solve more than 20\% of the tasks that involve 
+reasoning over multiple images and code generation~\cite{li2024mmcode}. 
+Also, the P2X model requires the use of separate program generators; 
+therefore, it cannot be optimized end-to-end. It is not possible to handle 
+the single point of failure during the parsing process.
 
-The bibliography is included in your source document with these two
-commands, placed just before the \verb|\end{document}| command:
-\begin{verbatim}
-  \bibliographystyle{ACM-Reference-Format}
-  \bibliography{bibfile}
-\end{verbatim}
-where ``\verb|bibfile|'' is the name, without the ``\verb|.bib|''
-suffix, of the \BibTeX\ file.
+In Meta-analytical Insight there is an observation that both symbolic and 
+statistical approaches converge in the context of multimodal AI systems. 
+The MultiFIX model is based on the application of symbolic reasoning with 
+the help of genetic programming. The WISE model is based on the application 
+of decision tree reasoning with the help of information gain (Gini Impurity)~%
+\cite{jiang2025wise}. Although both models attempt to offer surrogate 
+interpretability, they vary in their efficiency, scalability, and logical 
+simplicity.
 
-Citations and references are numbered by default. A small number of
-ACM publications have citations and references formatted in the
-``author year'' style; for these exceptions, please include this
-command in the {\bfseries preamble} (before the command
-``\verb|\begin{document}|'') of your \LaTeX\ source:
-\begin{verbatim}
-  \citestyle{acmauthoryear}
-\end{verbatim}
+\subsubsection{Data Limitations}
+For instance, in benchmark datasets like MISS-QA, the difficulty lies in 
+the alignment of visual schematic elements with the provided textual 
+narratives, thereby revealing the lack of cross-modal grounding~%
+\cite{zhao2025missqa}. Furthermore, datasets like SkinCon have revealed the 
+limitations of the granularity of their respective domain-specific concepts, 
+where the available coarse ontologies cannot differentiate between visually 
+similar categories.
 
+The difficulty of weak-to-strong generalization adds complexity to the 
+training process. Although small models like CLIP can be used as supervision 
+for large multimodal models, there is always a risk of propagating 
+hallucinations and biases from the weak model to the stronger model~%
+\cite{jiang2025wise}.
 
-  Some examples.  A paginated journal article \cite{Abril07}, an
-  enumerated journal article \cite{Cohen07}, a reference to an entire
-  issue \cite{JCohen96}, a monograph (whole book) \cite{Kosiur01}, a
-  monograph/whole book in a series (see 2a in spec. document)
-  \cite{Harel79}, a divisible-book such as an anthology or compilation
-  \cite{Editor00} followed by the same example, however we only output
-  the series if the volume number is given \cite{Editor00a} (so
-  Editor00a's series should NOT be present since it has no vol. no.),
-  a chapter in a divisible book \cite{Spector90}, a chapter in a
-  divisible book in a series \cite{Douglass98}, a multi-volume work as
-  book \cite{Knuth97}, a couple of articles in a proceedings (of a
-  conference, symposium, workshop for example) (paginated proceedings
-  article) \cite{Andler79, Hagerup1993}, a proceedings article with
-  all possible elements \cite{Smith10}, an example of an enumerated
-  proceedings article \cite{VanGundy07}, an informally published work
-  \cite{Harel78}, a couple of preprints \cite{Bornmann2019,
-    AnzarootPBM14}, a doctoral dissertation \cite{Clarkson85}, a
-  master's thesis: \cite{anisi03}, an online document / world wide web
-  resource \cite{Thornburg01, Ablamowicz07, Poker06}, a video game
-  (Case 1) \cite{Obama08} and (Case 2) \cite{Novak03} and \cite{Lee05}
-  and (Case 3) a patent \cite{JoeScientist001}, work accepted for
-  publication \cite{rous08}, 'YYYYb'-test for prolific author
-  \cite{SaeediMEJ10} and \cite{SaeediJETC10}. Other cites might
-  contain 'duplicate' DOI and URLs (some SIAM articles)
-  \cite{Kirschmer:2010:AEI:1958016.1958018}. Boris / Barbara Beeton:
-  multi-volume works as books \cite{MR781536} and \cite{MR781537}. A
-  presentation~\cite{Reiser2014}. An article under
-  review~\cite{Baggett2025}. A
-  couple of citations with DOIs:
-  \cite{2004:ITE:1009386.1010128,Kirschmer:2010:AEI:1958016.1958018}. Online
-  citations: \cite{TUGInstmem, Thornburg01, CTANacmart}.
-  Artifacts: \cite{R} and \cite{UMassCitations}.
+\subsubsection{Explainable Reasoning Limitations}
+Current models face challenges like ``pleonastic branching'' and unnecessary 
+self-reflection. These challenges cause inefficient and even deceptive 
+reasoning paths~\cite{wang2026bridging, jiang2025wise}. Although tools like 
+WISE and CoT Compression help in improving the quality of the explanation, 
+the problem of faithful and concise explanation remains.
 
-\section{Acknowledgments}
+\subsection{Future Directions: Human-in-the-Loop and Foundation Models}
+The way forward in the development of trustworthy multimodal AI involves 
+a focus on interactive and controllable reasoning systems.
+The key ways in which this can be achieved include:
+\begin{itemize}
+    \item \textbf{Intervention Efficiency:} Allowing human experts in the field 
+    to directly manipulate intermediate reasoning concepts in order to control 
+    the output of the model in real time.
+    \item \textbf{Hallucination Mitigation:} Creating standardized benchmarks 
+    for detecting discrepancies between the generated explanation and visual 
+    information.
+    \item \textbf{Hybrid Training Strategies:} Incorporating symbolic reasoning, 
+    as in MultiFIX, into the pre-training of foundation-level multimodal models.
+\end{itemize}
+These ways of proceeding highlight the need for human expertise in combination 
+with machine reasoning in order to develop robust and trustworthy AI systems.
 
-Identification of funding sources and other support, and thanks to
-individuals and groups that assisted in the research and the
-preparation of the work should be included in an acknowledgment
-section, which is placed just before the reference section in your
-document.
+\subsection{Pedagogical Implications}
+Rather than using adversarial assessment practices, it is recommended that 
+teachers utilize multimodal models as intelligent learning assistants~%
+\cite{denny2023conversing, gutierrez2024seeing}. The models can be highly 
+beneficial in assisting with the understanding of hierarchical concepts 
+such as trees and recursion, which can be difficult for students to grasp~%
+\cite{gutierrez2024seeing, hou2024more}.
 
-This section has a special environment:
-\begin{verbatim}
-  \begin{acks}
-  ...
-  \end{acks}
-\end{verbatim}
-so that the information contained therein can be more easily collected
-during the article metadata extraction phase, and to ensure
-consistency in the spelling of the section heading.
+In order to be more resilient in the face of advanced AI models, it is 
+recommended that assessment practices shift towards more project-based 
+learning, conceptual understanding, and problem-based learning. Assessment 
+practices such as ``ungrading'' can be beneficial in the classroom~%
+\cite{gutierrez2024seeing, hou2024more}.
 
-Authors should not prepare this section as a numbered or unnumbered {\verb|\section|}; please use the ``{\verb|acks|}'' environment.
+\subsection{Synthesis and Final Interpretation}
+The research question can be answered with qualified affirmation, since it 
+is indeed possible for multimodal models to explain their reasoning in 
+diagram-based computing tasks, although it is heavily dependent on structured 
+reasoning frameworks, concept organization, and visual grounding~%
+\cite{chen2024m3cot, jiang2025wise}.
 
-\section{Appendices}
-
-If your work needs an appendix, add it before the
-``\verb|\end{document}|'' command at the conclusion of your source
-document.
-
-Start the appendix with the ``\verb|appendix|'' command:
-\begin{verbatim}
-  \appendix
-\end{verbatim}
-and note that in the appendix, sections are lettered, not
-numbered. This document has two appendices, demonstrating the section
-and subsection identification method.
-
-\section{Multi-language papers}
-
-Papers may be written in languages other than English or include
-titles, subtitles, keywords and abstracts in different languages (as a
-rule, a paper in a language other than English should include an
-English title and an English abstract).  Use \verb|language=...| for
-every language used in the paper.  The last language indicated is the
-main language of the paper.  For example, a French paper with
-additional titles and abstracts in English and German may start with
-the following command
-\begin{verbatim}
-\documentclass[sigconf, language=english, language=german,
-               language=french]{acmart}
-\end{verbatim}
-
-The title, subtitle, keywords and abstract will be typeset in the main
-language of the paper.  The commands \verb|\translatedXXX|, \verb|XXX|
-begin title, subtitle and keywords, can be used to set these elements
-in the other languages.  The environment \verb|translatedabstract| is
-used to set the translation of the abstract.  These commands and
-environment have a mandatory first argument: the language of the
-second argument.  See \verb|sample-sigconf-i13n.tex| file for examples
-of their usage.
-
-\section{SIGCHI Extended Abstracts}
-
-The ``\verb|sigchi-a|'' template style (available only in \LaTeX\ and
-not in Word) produces a landscape-orientation formatted article, with
-a wide left margin. Three environments are available for use with the
-``\verb|sigchi-a|'' template style, and produce formatted output in
-the margin:
-\begin{description}
-\item[\texttt{sidebar}:]  Place formatted text in the margin.
-\item[\texttt{marginfigure}:] Place a figure in the margin.
-\item[\texttt{margintable}:] Place a table in the margin.
-\end{description}
-
-%%
-%% The acknowledgments section is defined using the "acks" environment
-%% (and NOT an unnumbered section). This ensures the proper
-%% identification of the section in the article metadata, and the
-%% consistent spelling of the heading.
-\begin{acks}
-To Robert, for the bagels and explaining CMYK and color spaces.
-\end{acks}
+The next major milestone in the development of expert-level AI systems will 
+be the transition from interpreting raw pixel information to meaningful and 
+explainable reasoning. Although multimodal models have shown remarkable 
+potential in performing tasks in structured environments, there is still 
+an evolving challenge in developing robust and generalizable reasoning in 
+multimodal tasks.
 
 %%
 %% The next two lines define the bibliography style to be used, and
@@ -772,36 +607,6 @@ To Robert, for the bagels and explaining CMYK and color spaces.
 %%
 %% If your work has an appendix, this is the place to put it.
 \appendix
-
-\section{Research Methods}
-
-\subsection{Part One}
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-malesuada, quam in pulvinar varius, metus nunc fermentum urna, id
-sollicitudin purus odio sit amet enim. Aliquam ullamcorper eu ipsum
-vel mollis. Curabitur quis dictum nisl. Phasellus vel semper risus, et
-lacinia dolor. Integer ultricies commodo sem nec semper.
-
-\subsection{Part Two}
-
-Etiam commodo feugiat nisl pulvinar pellentesque. Etiam auctor sodales
-ligula, non varius nibh pulvinar semper. Suspendisse nec lectus non
-ipsum convallis congue hendrerit vitae sapien. Donec at laoreet
-eros. Vivamus non purus placerat, scelerisque diam eu, cursus
-ante. Etiam aliquam tortor auctor efficitur mattis.
-
-\section{Online Resources}
-
-Nam id fermentum dui. Suspendisse sagittis tortor a nulla mollis, in
-pulvinar ex pretium. Sed interdum orci quis metus euismod, et sagittis
-enim maximus. Vestibulum gravida massa ut felis suscipit
-congue. Quisque mattis elit a risus ultrices commodo venenatis eget
-dui. Etiam sagittis eleifend elementum.
-
-Nam interdum magna at lectus dignissim, ac dignissim lorem
-rhoncus. Maecenas eu arcu ac neque placerat aliquam. Nunc pulvinar
-massa et mattis lacinia.
 
 \end{document}
 \endinput
