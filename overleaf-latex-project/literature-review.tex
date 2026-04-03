@@ -480,22 +480,24 @@ owing to their visual characteristics are now resolvable with significant
 reliability, fundamentally contesting conventional assessment paradigms in 
 computer science education.
 
-\subsection{How well does step-by-step logic work compared to holistic inference?}
-The deconstruction of intricate problems into clear reasoning chains 
-mitigates a primary deficiency in conventional transformer architectures: 
-their propensity for ``Bag-of-Words'' behavior, which inadequately represents 
-relational structure. Structured approaches decouple program elements by 
-prompting models to clearly name subjects, relations, and objects. This turns general 
-predictions into structured, step-by-step reasoning processes.
+\subsection{The Efficacy of Step-by-Step Logic vs. Holistic Inference}
+The breaking down of intricate problems into hierarchies of reasoning solves a 
+fundamental limitation of conventional transformer-based designs which can be 
+referred to as Bag-of-Words behavior in which relational dependencies are not 
+entirely represented. M3CoT frameworks explicitly implement multimodal 
+chain-of-thought reasoning, and models are required to produce intermediate 
+visual and textual reasoning stages instead of using holistic inference~%
+\cite{chen2024m3cot}. This hierarchical breakdown models outputs baseless 
+in nature into explicable courses of reasoning.
 
-The WISE framework also uses an Elimination Tree to create a hierarchical 
-reasoning structure. This tree uses counterfactual reasoning to get rid of 
-confusing categories~\cite{jiang2025wise}. The model imitates expert-level 
-diagnostic reasoning by excluding ``matching negatives,'' guaranteeing that 
-conclusions are founded on discriminative features rather than probabilistic 
-shortcuts. This is very similar to tasks that require diagram-based 
-reasoning, where knowing how nodes and edges are related is important for 
-getting the right answer.
+On the same note, the WISE model proposes an elimination-based reasoning 
+mechanism that is based on weak supervision that reduces issues of spurious 
+correlation by directing the model into discriminative features~%
+\cite{jiang2025wise}. These methods are much more similar to the reasoning 
+processes of an expert since they are systematic in the process of filtering 
+out irrelevant or misleading visual phenomena. This is so as to make sure 
+that model decisions are informed by useful associations of features as opposed 
+to statistical shortcuts.
 
 \subsection{Complexity of Structure and Cognitive Load}
 The literature consistently identifies structural density, quantified by 
