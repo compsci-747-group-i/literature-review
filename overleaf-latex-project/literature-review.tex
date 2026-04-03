@@ -298,19 +298,20 @@ The current research landscape is defined by two complementary directions:
 On one hand, models such as GPT-4o, Gemini, and Claude are evaluated 
 on structured computing diagrams including graphs, trees, and flowcharts~%
 \cite{singh2024flowvqa, gutierrez2024seeing}. On the other hand, 
-frameworks such as WISE, P2X, and MultiFIX focus on improving reasoning 
+frameworks such as WISE, P2X, and MultiFIX~\cite{malafaia2025step} focus on improving reasoning 
 transparency through structured decomposition and symbolic alignment~%
 \cite{jiang2025wise}.
 
 \begin{table*}
 \caption{Comparison of Core Methodologies and Frameworks}
+\label{tab:methodologies}
 \begin{tabular}{p{0.15\linewidth} p{0.3\linewidth} p{0.25\linewidth} p{0.2\linewidth}}
 \toprule
 \textbf{Framework} & \textbf{Primary Mechanism} & \textbf{Backbone Models Used} & \textbf{Output Type} \\
 \midrule
-WISE~\cite{jiang2025wise} & Weak Supervision \& CBM Reformulation & CLIP (ViT-L/14), Qwen2-VL-7B & Multimodal Chain-of-Thought (MCoT) \\
-P2X & Program Deconstruction \& Reasoning Cells & VLMO, ALBEF & Bounding Boxes, Classes, Answers \\
-MultiFIX & Multimodal Data Fusion + Symbolic Reasoning & DL + Genetic Programming & Symbolic Expressions, Heatmaps \\
+WISE~\cite{jiang2025wise} & Weak Supervision \& Step-by-Step Explanations & CLIP-based / MLLMs & Multimodal Chain-of-Thought (MCoT) \\
+M3CoT~\cite{chen2024m3cot} & Multi-step Multimodal Chain-of-Thought Benchmark & Vision-Language Models (various) & Structured reasoning traces \\
+RSVP~\cite{lu2025rsvp} & Reasoning Segmentation via Visual Prompting & Vision-Language Models & Segmented visual reasoning outputs \\
 \bottomrule
 \end{tabular}
 \end{table*}
@@ -523,7 +524,7 @@ the single point of failure during the parsing process.
 
 In Meta-analytical Insight there is an observation that both symbolic and 
 statistical approaches converge in the context of multimodal AI systems. 
-The MultiFIX model is based on the application of symbolic reasoning with 
+The MultiFIX~\cite{malafaia2025step} model is based on the application of symbolic reasoning with 
 the help of genetic programming. The WISE model is based on the application 
 of decision tree reasoning with the help of information gain (Gini Impurity)~%
 \cite{jiang2025wise}. Although both models attempt to offer surrogate 
@@ -564,7 +565,7 @@ The key ways in which this can be achieved include:
     for detecting discrepancies between the generated explanation and visual 
     information.
     \item \textbf{Hybrid Training Strategies:} Incorporating symbolic reasoning, 
-    as in MultiFIX, into the pre-training of foundation-level multimodal models.
+    as in MultiFIX~\cite{malafaia2025step}, into the pre-training of foundation-level multimodal models.
 \end{itemize}
 These ways of proceeding highlight the need for human expertise in combination 
 with machine reasoning in order to develop robust and trustworthy AI systems.
